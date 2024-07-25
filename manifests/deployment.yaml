@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todos
+  template:
+    metadata:
+      labels:
+        app: todos
+    spec:
+      containers:
+        - name: todos
+          image: todos:0.5
+          env:
+            - name: PORT
+              value: "4000"
+          volumeMounts:
+            - name: shared-image
+              mountPath: /app/images
+      volumes:
+        - name: shared-image
+          persistentVolumeClaim:
+            claimName: todos-claim

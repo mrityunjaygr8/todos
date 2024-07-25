@@ -1,0 +1,33 @@
+package templates
+
+import "github.com/mrityunjaygr8/todos/todos"
+
+templ Hello(image string, todos []todos.Todo) {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="A brief description of your page content" />
+    <meta name="keywords" content="keyword1, keyword2, keyword3"/>
+    <meta name="author" content="Your Name"/>
+    <title>Document Title</title>
+</head>
+<body>
+  <img src={image} alt="woo woo" width="200px" height="auto" /><br /><br />
+
+  <form >
+    <label for="todo-input">Todo</label>
+    <input id="todo-input" maxlength="140" name="todo-input"/>
+    <input type="submit" value="Submit" /> 
+  </form>
+
+  <ul>
+    for _, todo := range todos {
+      <li>{string(todo)}</li>
+    }
+  </ul>
+</body>
+</html>
+}
